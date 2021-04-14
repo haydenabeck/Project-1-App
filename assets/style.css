@@ -47,15 +47,51 @@
 
 .custom-dropdowns {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    padding: 0px;
+    margin: 20px;
+
 }
 
-.img-container {
+/* Data section styling and heading */
+
+.trains-styling {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 20px;
+    margin: 20px 20px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    width: 90px;
+    font-size: 18px;
+}
+
+.data-entry-area {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 20px;
+    margin: 20px 20px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    width: 400px;
+}
+
+/* Image styling */
+
+img {
+    border-radius: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 100%;
     height: auto;
-    padding: 20px;
-    object-fit: contain;
-}    
+} 
+
+@media only screen and (min-width: 570px){
+    img {
+      float: right;
+      display: flex;
+      justify-content: right;
+      align-items: right;
+    }
+  }
