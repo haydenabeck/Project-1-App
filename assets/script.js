@@ -6,15 +6,42 @@ $('.dropdown-trigger2').dropdown();
 
 // Variables 
 var button = document.querySelector('.button')
-
 // DATA TEST BUTTON
-button.addEventListener('click', async function(){
+button.addEventListener('click',function(){
     
+  $(function() {
+    var params = {
+        "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
+        "LineCode":"BL",
+    };
     $.ajax({
-        url: "http://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=bc18ac117906420fa9ac92103915f09d&runnumber=830&outputType=JSON",
-        type: "GET",  
-      }).then(function(data) {
-      alert("Got some data!");
+        url: "https://api.wmata.com/Rail.svc/json/jStations?" + $.param(params),
+        type: "GET",
+    })
+    .done(function(data) {
       console.log(data);
-      })
+      for(var i=0;i<data.Stations.length;i++){
+      console.log(data.Stations[i]);
+      }
+    })
+    .fail(function() {
+        alert("error");
+    });
+  });
+  // $(function() {
+  //   var params = {
+  //       "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
+  //   };
+    
+  //   $.ajax({
+  //       url: "https://api.wmata.com/Rail.svc/Lines" + $.param(params),
+  //       type: "GET",
+  //   })
+  //   .then(function(data) {
+  //       console.log(data);
+  //   })
+  //   .fail(function() {
+  //       alert("error");
+  //   });
+  // });
 });
