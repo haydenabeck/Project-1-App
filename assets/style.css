@@ -45,14 +45,17 @@
     background-color: rgb(55, 174, 253);
 }
 
-.dropdown-trigger2 {
-    background-color: var(--primary-color);
+.custom-dropdowns {
+    display: flex;
+    justify-content: space-between;
 }
 
-.dropdown-trigger2:hover {
-    background-color: rgb(55, 174, 253);
-}
-
-.dropdown-trigger2:focus {
-    background-color: rgb(55, 174, 253);
-}
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+    object-fit: contain;
+}    
