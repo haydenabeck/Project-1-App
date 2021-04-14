@@ -53,6 +53,8 @@
 
 }
 
+/* Data section styling and heading */
+
 .trains-styling {
     display: flex;
     justify-content: flex-start;
@@ -71,8 +73,10 @@
     margin: 20px 20px;
     background: var(--primary-color);
     color: var(--secondary-color);
-    width: 200px;
+    width: 400px;
 }
+
+/* Image styling */
 
 img {
     border-radius: 30%;
@@ -81,4 +85,13 @@ img {
     align-items: center;
     max-width: 100%;
     height: auto;
-}    
+} 
+
+@media only screen and (min-width: 570px){
+    img {
+      float: right;
+      display: flex;
+      justify-content: right;
+      align-items: right;
+    }
+  }
