@@ -21,38 +21,32 @@ $(document).ready(function () {
           });
           $('h4').text(stationName.Name);
           stationNameFound=stationName.Name;
+          $(function () {
+            var params = {
+              "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
+              "Line": "BL",
+            };
+      
+            $.ajax({
+              url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + thetrain + '?' + $.param(params),
+              type: "GET",
+            })
+              .then(function (data) {
+                trainFound = data.Trains.find(Trains => {
+                  return Trains
+                })
+                populateList(stationNameFound,trainFound.Min);
+              })
+              .fail(function () {
+                alert("error");
+              })
+          })
+          //run another ajax here
         })
         .fail(function () {
           alert("error");
         })
     });
-    $(function () {
-      var params = {
-        "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
-        "Line": "BL",
-      };
-
-      $.ajax({
-        url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + thetrain + '?' + $.param(params),
-        type: "GET",
-      })
-        .then(function (data) {
-          trainFound = data.Trains.find(Trains => {
-            return Trains
-          })
-          populateList(stationNameFound,trainFound.Min);
-          // $('#data-entry-area').html(
-          //   `
-          //     <li>Train Name: ${stationNameFound}</li>
-          //     <li>${isArrivingOrBoarding(JSON.stringify(trainFound.Min))}</li>
-          //     <li>Filler4</li>
-          // `
-          // );
-        })
-        .fail(function () {
-          alert("error");
-        })
-    })
   })
 })
 
