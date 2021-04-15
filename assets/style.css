@@ -50,6 +50,7 @@
     color: var(--secondary-color);
     width: 90px;
     font-size: 18px;
+    
 }
 .data-entry-area {
     display: flex;
@@ -65,17 +66,15 @@
 img {
     border-radius: 30%;
     display: flex;
-    justify-content: center;
-    align-items: right;
-    max-width: 60%;
+    justify-content: right;
+    max-width: 100%;
     height: auto;
-    float: none;
 } 
-@media only screen and (min-width: 570px){
-    img {
-      float: right;
-      display: flex;
-      justify-content: right;
-      align-items: right;
-    }
-  }
+
+/* Footer styling */
+
+.footer {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px;
+}
