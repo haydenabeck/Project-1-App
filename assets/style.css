@@ -31,11 +31,13 @@
     display: flex;
     justify-content: flex-start;
     padding: 20px 20px;
-    margin: 20px 20px;
+    margin: 25px 20px;
     background: var(--primary-color);
     color: var(--secondary-color);
-    width: 90px;
+    width: 150px;
     font-size: 18px;
+    text-align: center;
+    border-radius: 4px;
     
     
 }
@@ -44,15 +46,21 @@
     display: flex;
     justify-content: flex-start;
     padding: 20px 20px;
-    margin: 20px 20px;
+    margin: 25px 20px;
     background: var(--primary-color);
     color: var(--secondary-color);
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 182px;
     
 }
 
 /* Dropdown button styling */
 .dropdown-trigger1 {
     background-color: var(--primary-color);
+    border-radius: 4px;
+    margin: 5px;
     
 }
 .dropdown-trigger1:hover {
