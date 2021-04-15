@@ -40,12 +40,9 @@ $(document).ready(function () {
           })
 
           $('#data-entry-area').html(
-            `<div class="data-display">
-          <h4 class="z-depth-2 trains-styling" >Trains</h4>
-          <ul id="data-entry-area" class="z-depth-4 data-entry-area">
+            `
               <li>Train Name: ${stationName.Name}</li>
               <li>${isArrivingOrBoarding(TrainFound.Min)}</li>
-              <li>${TrainFound.Address}</li>
               <li>Filler4</li>
           </ul>
       </div>
