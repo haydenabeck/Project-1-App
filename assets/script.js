@@ -1,7 +1,8 @@
 // Dropdown functionality
 var dropdown1 = $('.dropdown-trigger1').dropdown();
 $('.dropdown-trigger2').dropdown();
-var stationName;
+var stationNameFound;
+var trainFound;
 $(document).ready(function () {
   $('.Clickme').on('click', function (e) {
     var thetrain = e.target.id;
@@ -15,10 +16,11 @@ $(document).ready(function () {
         type: "GET",
       })
         .then(function (data) {
-          stationName = data.Stations.find(Stations => {
+          var stationName = data.Stations.find(Stations => {
             return Stations.Code == thetrain;
           });
           $('h4').text(stationName.Name);
+          stationNameFound=stationName.Name;
         })
         .fail(function () {
           alert("error");
@@ -35,19 +37,17 @@ $(document).ready(function () {
         type: "GET",
       })
         .then(function (data) {
-          var TrainFound = data.Trains.find(Trains => {
+          trainFound = data.Trains.find(Trains => {
             return Trains
           })
-
-          $('#data-entry-area').html(
-            `
-              <li>Train Name: ${stationName.Name}</li>
-              <li>${isArrivingOrBoarding(TrainFound.Min)}</li>
-              <li>Filler4</li>
-          </ul>
-      </div>
-          `
-          );
+          populateList(stationNameFound,trainFound.Min);
+          // $('#data-entry-area').html(
+          //   `
+          //     <li>Train Name: ${stationNameFound}</li>
+          //     <li>${isArrivingOrBoarding(JSON.stringify(trainFound.Min))}</li>
+          //     <li>Filler4</li>
+          // `
+          // );
         })
         .fail(function () {
           alert("error");
@@ -65,4 +65,16 @@ function isArrivingOrBoarding(string) {
   } else if (string == "") {
     return "Not Available";
   }
+  else{
+    return "Train is arriving in "+string+" minutes.";
+  }
+}
+function populateList(stationName,TrainMinutes){
+  $('#data-entry-area').html(
+    `
+      <li>Train Name: ${stationName}</li>
+      <li>${isArrivingOrBoarding(TrainMinutes)}</li>
+      <li>Filler4</li>
+  `
+  );
 }
