@@ -59,12 +59,11 @@ var Stations={
     //StationIDS.click(function(){
       for (var yo=0;yo<Stations.StatIDS.length;yo++){
       // Stations.StatCodes[Stations.StatIDS[yo]]
-        console.log(Stations.StatCodes[Stations.StatIDS[yo]]);
+        // console.log(Stations.StatCodes[Stations.StatIDS[yo]]);
       }
 $(document).ready(function(){
   $('.Clickme').on('click', function(e){
     var thetrain=e.target.id;
-    console.log(thetrain);
     $(function() { 
     var params = {
         "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
@@ -75,39 +74,31 @@ $(document).ready(function(){
         type: "GET",
     })
     .then(function(data) {
-      for(var i=0;i<data.Stations.length;i++){
-      console.log(data.Stations[i].Name);
-      // console.log(data.Stations[i].Code);
-      if(data.Stations[i].Code===stationCodes[i]){
-        // $(StationIDS[i]).text(data[i].Name.value);
-        // console.log("working");
-      }
-     }
+      var found=data.Stations.find(Stations => {
+        return Stations.Code == thetrain;
+      });
+      $('h4').text(found.Name);
     })
     .fail(function() {
         alert("error");
     })
   });
-  // $(function() {
-  //   var params = {
-  //       "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
-  //       "Line": "BL",
-  //   };
+  $(function() {
+    var params = {
+        "api_key": "3125fa36e79d4814832e6a60e9f0a0a0",
+        "Line": "BL",
+    };
     
-  //   $.ajax({
-  //       url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" +stationCodes+'?'+ $.param(params),
-  //       type: "GET",
-  //   })
-  //   .then(function(data) {
-  //       console.log(data);
-  //       for(var i=0;i<data.Trains.length;i++){
-  //         console.log(data.Trains[i]);
-  //         console.log(data.Trains[i].Min);
-  //         }
-  //   })
-  //   .fail(function() {
-  //       alert("error");
-  //   })
-  // })
+    $.ajax({
+        url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" +thetrain+'?'+ $.param(params),
+        type: "GET",
+    })
+    .then(function(data) {
+      console.log(data);
+    })
+    .fail(function() {
+        alert("error");
+    })
+  })
 })
 })
