@@ -1,17 +1,3 @@
-// Image click to expand
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.materialboxed');
-  var instances = M.Materialbox.init(elems, options);
-});
-
-// Or with jQuery
-
-$(document).ready(function(){
-  $('.materialboxed').materialbox();
-});
-
-
 // Dropdown functionality
 var dropdown1 = $('.dropdown-trigger1').dropdown();
 $('.dropdown-trigger2').dropdown();
