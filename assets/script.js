@@ -72,9 +72,11 @@ function isArrivingOrBoarding(string) {
 function populateList(stationName,TrainMinutes){
   $('#data-entry-area').html(
     `
-      <li>Train Name: ${stationName}</li>
-      <li>${isArrivingOrBoarding(TrainMinutes)}</li>
-      <li>Filler4</li>
+      <li class="li-styling"
+    color: var(--secondary-color)">Train Name: ${stationName}</li>
+      <li class="li-styling"
+    color: var(--secondary-color)">${isArrivingOrBoarding(TrainMinutes)}</li>
+
   `
   );
 }
